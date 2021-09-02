@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ConvORM.Tests": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "MySQLConnectionString": "Server=127.0.0.1;Database=convorm;Uid=root;Pwd=123456;"
+      }
+    }
+  }
+}
