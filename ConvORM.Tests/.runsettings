@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+    <RunConfiguration>
+        <EnvironmentVariables>
+            <MySQLConnectionString>Server=127.0.0.1;Database=convorm;Uid=root;Pwd=123456;SslMode=none;</MySQLConnectionString>
+        </EnvironmentVariables>
+    </RunConfiguration>
+</RunSettings>
