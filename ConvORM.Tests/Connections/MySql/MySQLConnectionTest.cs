@@ -1,4 +1,5 @@
-﻿using ConvORM.Driver.MySQL.Connections;
+﻿using ConvORM.Connections;
+using ConvORM.Driver.MySQL.Connections;
 using ConvORM.Driver.MySQL.Connections.Parameters;
 using FluentAssertions;
 using System;
@@ -48,7 +49,7 @@ namespace ConvORM.Tests.Connections.MySql
 
                 int position = s.IndexOf('=');
                 var key = s.Substring(0, position);
-                var value = s.Substring(position + 1, s.Length - (position + 1));
+                var value = s[(position + 1)..];
                 dictionary.Add(key, value);
             }
 
@@ -69,6 +70,24 @@ namespace ConvORM.Tests.Connections.MySql
             var connection = new MySQLConnection(CreateParameters());
 
             connection.Open().Should().BeTrue();
+        }
+
+        [Fact]
+        public void MySQL_Check_If_Connection_Was_Added_To_Connection_Poll()
+        {
+            var connection = new MySQLConnection(GetConnectionStringFromEnvironmentVariable());
+
+            var connectionName = "Connection Test";
+
+            connection.Name = connectionName;
+            connection.Open();
+
+            ConnectionPool.GetConnectionByName(connectionName).Should().NotBeNull();
+        }
+
+        public void MySQL_Check_If_Connection_Was_State_Changed()
+        {
+            var 
         }
     }
 }
